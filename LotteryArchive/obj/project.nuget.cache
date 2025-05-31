@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "+hYamA9SLDo=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Honor\\source\\repos\\LotteryArchive\\LotteryArchive\\LotteryArchive.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Honor\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

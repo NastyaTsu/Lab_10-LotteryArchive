@@ -13,7 +13,7 @@ namespace Model.Data
         public abstract void SerializeLottery(Lottery lotter, WinningTicket TicetWin);
         public abstract void SerializeParticipant(LotteryParticipant participant);
 
-        public abstract List<dynamic> DeserializeLottery();
+        public abstract List<string> DeserializeLottery(string file);
         public abstract LotteryParticipant DeserializeParticipant(string fileName);
     }
 }

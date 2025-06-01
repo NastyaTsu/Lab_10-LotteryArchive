@@ -1,5 +1,5 @@
 ﻿using LotteryArchive.Model.Core;
-using LotteryArchive.Model.Data;
+using LotteryArchive.Model;
 using Newtonsoft.Json.Schema;
 using System;
 using System.Collections.Generic;
@@ -83,10 +83,7 @@ namespace LotteryArchive
             }
             if (Form1.SelectedItem == "Xml")
             {
-                //string fileName = $"{lottery.Name}_{DateTime.Now:yyyyMMddHHmmss}.xml";
-                //string filePath = Path.Combine(newFolderPath, fileName);
-                //XmlSerializer serializer = new XmlSerializer(result.GetType());
-                //serializer.Serialize(result, filePath);
+                new XmlSerializer().SerializeLottery(lottery, TicetWin);
             }
 
         }

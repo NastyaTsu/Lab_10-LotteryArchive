@@ -16,32 +16,32 @@ namespace Model.Data
     public class JsonSerializer : Serializer
     {
         public string Filename { get; set; }
-        public override List<dynamic> DeserializeLottery()
+        public override List<string> DeserializeLottery(string file)
         {
-            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            string folderPath = Path.Combine(desktopPath, "Статистика");
+            List<string> lines = new List<string>();
+            string json = File.ReadAllText(file);
+            var obj = JObject.Parse(json);
 
-            if (!Directory.Exists(folderPath))
-            {
-                return null;
-            }
+            string lotteryName = (string)obj["Название_лотереи"] ?? "";
+            string participants = (string)obj["Количество_участников"];
+            string tickets = (string)obj["Количество_билетов"];
+            string prizeFund = (string)obj["Призовой_фонд"];
+            string ticketPrice = (string)obj["Цена_билета"];
+            string winner = (string)obj["Победитель"] ?? "";
+            string winnerId = (string)obj["ID_победителя"] ?? "";
+            string date = (string)obj["Дата_проведения"];
 
-            var jsonFiles = Directory.GetFiles(folderPath, Filename);
-            if (jsonFiles.Length == 0)
-            {
-                return null;
-            }
+            lines.Add(lotteryName);
+            lines.Add(participants);
+            lines.Add(tickets);
+            lines.Add(prizeFund);
+            lines.Add(ticketPrice);
+            lines.Add(winner);
+            lines.Add(winnerId);
+            lines.Add(date);
 
-            var allResults = new List<dynamic>();
 
-            foreach (var file in jsonFiles)
-            {
-                string json = File.ReadAllText(file);
-                var result = JsonConvert.DeserializeObject<dynamic>(json);
-                if (result != null)
-                    allResults.Add(result);
-            }
-            return allResults;
+            return lines;
         }
 
         public override LotteryParticipant DeserializeParticipant(string fileName)

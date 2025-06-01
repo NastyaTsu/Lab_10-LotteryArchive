@@ -40,16 +40,11 @@ namespace LotteryArchive
 
         private void button3_Click(object sender, EventArgs e)
         {
-            foreach (Form open in Application.OpenForms)
-            {
-                if (open is Statistic)
-                {
-                    open.Focus();
-                    return;
-                }
-            }
-            Statistic obj = new Statistic();
-            obj.Show();
+            
+
+            // Открыть форму со статистикой и передать файлы
+            var statsForm = new Statistic();
+            statsForm.ShowDialog();
         }
 
         private void Form1_Load(object sender, EventArgs e)

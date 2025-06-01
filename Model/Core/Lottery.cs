@@ -13,6 +13,9 @@ namespace LotteryArchive.Model.Core
         public int Totaltickets { get; set; }
         public int Prizefond { get; set; }
         public int Colparticipants { get; set; }
+        public LotteryParticipant Победитель { get; set; }
+        public LotteryParticipant ID_победителя { get; set; }
+        public DateTime Дата_проведения { get; set; }
         private List<Ticket> _ticket;
         public List<Ticket> Massivticket
         {

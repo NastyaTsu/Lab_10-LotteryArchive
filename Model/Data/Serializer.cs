@@ -1,23 +1,19 @@
-﻿using System;
+﻿using LotteryArchive.Model.Core;
+using Model.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LotteryArchive.Model.Data
+namespace Model.Data
 {
     public abstract class Serializer
     {
-        public abstract void Serialize<T>(T data, string filePath);
-        public abstract T Deserialize<T>(string filePath);
+        public abstract void SerializeLottery(Lottery lotter, WinningTicket TicetWin);
+        public abstract void SerializeParticipant(LotteryParticipant participant);
 
-        protected void EnsureDirectoryExists(string filePath)
-        {
-            var directory = Path.GetDirectoryName(filePath);
-            if (!Directory.Exists(directory))
-            {
-                Directory.CreateDirectory(directory);
-            }
-        }
+        public abstract List<dynamic> DeserializeLottery();
+        public abstract LotteryParticipant DeserializeParticipant(string fileName);
     }
 }

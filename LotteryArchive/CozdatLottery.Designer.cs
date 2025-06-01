@@ -39,6 +39,7 @@
             button1 = new Button();
             label5 = new Label();
             numericUpDown4 = new NumericUpDown();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown3).BeginInit();
@@ -74,6 +75,7 @@
             // numericUpDown1
             // 
             numericUpDown1.Location = new Point(12, 94);
+            numericUpDown1.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
             numericUpDown1.Name = "numericUpDown1";
             numericUpDown1.Size = new Size(230, 27);
             numericUpDown1.TabIndex = 3;
@@ -91,6 +93,7 @@
             // numericUpDown2
             // 
             numericUpDown2.Location = new Point(12, 156);
+            numericUpDown2.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
             numericUpDown2.Name = "numericUpDown2";
             numericUpDown2.Size = new Size(209, 27);
             numericUpDown2.TabIndex = 5;
@@ -107,6 +110,7 @@
             // numericUpDown3
             // 
             numericUpDown3.Location = new Point(12, 221);
+            numericUpDown3.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
             numericUpDown3.Name = "numericUpDown3";
             numericUpDown3.Size = new Size(178, 27);
             numericUpDown3.TabIndex = 7;
@@ -133,16 +137,28 @@
             // numericUpDown4
             // 
             numericUpDown4.Location = new Point(12, 285);
+            numericUpDown4.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
             numericUpDown4.Name = "numericUpDown4";
             numericUpDown4.Size = new Size(151, 27);
             numericUpDown4.TabIndex = 10;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(214, 30);
+            button2.Name = "button2";
+            button2.Size = new Size(115, 30);
+            button2.TabIndex = 11;
+            button2.Text = "Случайное";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // CozdatLottery
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Pink;
-            ClientSize = new Size(332, 403);
+            ClientSize = new Size(339, 403);
+            Controls.Add(button2);
             Controls.Add(numericUpDown4);
             Controls.Add(label5);
             Controls.Add(button1);
@@ -178,5 +194,6 @@
         private Button button1;
         private Label label5;
         private NumericUpDown numericUpDown4;
+        private Button button2;
     }
 }

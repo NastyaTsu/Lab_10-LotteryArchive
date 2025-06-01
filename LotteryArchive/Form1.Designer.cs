@@ -61,7 +61,7 @@
             button3.Name = "button3";
             button3.Size = new Size(155, 55);
             button3.TabIndex = 2;
-            button3.Text = "Статистика";
+            button3.Text = "Посмотреть статистику";
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
             // 

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LotteryArchive.Model.Core;
+using Model.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,38 +11,23 @@ namespace LotteryArchive.Model.Data
 {
     public class XmlSerializer : Serializer
     {
-        private Type type;
 
-        public XmlSerializer(Type type)
-        {
-            this.type = type;
-        }
-
-        public override void Serialize<T>(T data, string filePath)
-        {
-            EnsureDirectoryExists(filePath);
-            var serializer = new XmlSerializer(typeof(T));
-            using (var writer = new StreamWriter(filePath))
-            {
-                serializer.Serialize(writer, data);
-            }
-        }
-
-        private void Serialize<T>(StreamWriter writer, T? data)
+        public override List<dynamic> DeserializeLottery()
         {
             throw new NotImplementedException();
         }
 
-        public override T Deserialize<T>(string filePath)
+        public override LotteryParticipant DeserializeParticipant(string fileName)
         {
-            var serializer = new XmlSerializer(typeof(T));
-            using (var reader = new StreamReader(filePath))
-            {
-                return (T)serializer.Deserialize<T>(reader);
-            }
+            throw new NotImplementedException();
         }
 
-        private T Deserialize<T>(StreamReader reader)
+        public override void SerializeLottery(Lottery loter, WinningTicket TicetWin)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void SerializeParticipant(LotteryParticipant participant)
         {
             throw new NotImplementedException();
         }

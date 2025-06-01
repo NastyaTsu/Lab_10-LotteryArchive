@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using Model.Data;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -20,10 +21,8 @@ namespace LotteryArchive
         {
             InitializeComponent();
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            string documentesPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             if (string.IsNullOrWhiteSpace(textBox1.Text))
             {
                 MessageBox.Show("Укажите название");
@@ -50,11 +49,6 @@ namespace LotteryArchive
                 MessageBox.Show("Билетов должно быть больше или равно количеству участников");
                 return;
             }
-            //if (files.Length < numericUpDown1.Value)
-            //{
-            //    MessageBox.Show("Добавте больше участников");
-            //    return;
-            //}
             if (numericUpDown4.Value == 0)
             {
                 MessageBox.Show("Цена билета должена быть больше нуля");
@@ -66,7 +60,7 @@ namespace LotteryArchive
             int KolBilet = (int)numericUpDown2.Value;
             int KolPrize = (int)numericUpDown3.Value;
             int KolPrice = (int)numericUpDown4.Value;
-            
+
             var lottery = new Lottery(name, KolBilet, KolPrize, KolPerson, KolPrice);
             lottery.RandomPerson();
             var TicetWin = lottery.DetermineWinner();
@@ -79,23 +73,23 @@ namespace LotteryArchive
             LotteryParticipant person = TicetWin.Owner;
             string FullNamePerson = person.Fullname;
             int PersonBalanse = person.Balance;
-            string item = $"Название лотереи: {name}, Количество участников: {KolPerson}, Количество билетов: {KolBilet}, Призовой фонд: {KolPrize}, Стоимость билета: {KolPrice}, Имя Победителя: {FullNamePerson}, Id победителя:{id}";
+
             MessageBox.Show($"Победитель: {FullNamePerson}{Environment.NewLine} id выигрышного билета: {id}{Environment.NewLine} Выигрыш: {KolPrize}{Environment.NewLine} Баланс победителя {PersonBalanse}");
-            string fileName = $"{lottery.Name}_{DateTime.Now:yyyyMMddHHmmss}.json";
-            string filePath = Path.Combine(documentesPath, fileName);
+
+
             if (Form1.SelectedItem == "Json")
             {
-                JsonSerializer serializer = new JsonSerializer();
-                serializer.Serialize(item, filePath);
+                new JsonSerializer().SerializeLottery(lottery, TicetWin);
             }
             if (Form1.SelectedItem == "Xml")
             {
-                XmlSerializer serializer = new XmlSerializer(item.GetType());
-                serializer.Serialize(item, filePath);
+                //string fileName = $"{lottery.Name}_{DateTime.Now:yyyyMMddHHmmss}.xml";
+                //string filePath = Path.Combine(newFolderPath, fileName);
+                //XmlSerializer serializer = new XmlSerializer(result.GetType());
+                //serializer.Serialize(result, filePath);
             }
-            
-            
-    }
+
+        }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -110,6 +104,21 @@ namespace LotteryArchive
         private void CozdatLottery_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string[] lotteryNames = new string[] { "Золотая Лотерея", "Счастливый Билет", "Лотерея Удачи", "Везучий Джекпот", "Супер Лото",
+                "Миллионер Экспресс", "Лотерея Мечты", "Быстрый Выигрыш", "Звездный Джекпот", "Секрет Удачи", "Фортуна Плюс", "Счастливый Шанс", 
+                "Лото Премиум", "Большой Выигрыш", "Золотой Билет", "Экспресс Удачи", "Лотерея Сокровищ", "Джекпот Мания", "Супер Фортуна", 
+                "Миллионный Шанс", "Волшебный Билет", "Лотерея Успеха", "Золотой Джекпот", "Счастливый Круг", "Лото Экспресс", "Мега Выигрыш", 
+                "Фортуна Экспресс", "Супер Выигрыш", "Звездный Шанс", "Лотерея Мира", "Победитель Сегодня", "Счастливый Ключ", "Лотерея Счастья", 
+                "Золотая Мечта", "Везение Плюс", "Джекпот Лидер", "Супер Билет", "Миллионер Плюс", "Лото Удачи", "Звездный Выигрыш", 
+                "Фортуна Джекпот", "Лотерея Подарков", "Везучий Капитал", "Счастливый Момент", "Большой Джекпот", "Золотая Фортуна","Лото Мечты", 
+                "Экспресс Победы", "Джекпот Удачи", "Супер Момент" };
+            Random rnd = new Random();
+            string randomLottery = lotteryNames[rnd.Next(lotteryNames.Length)];
+            textBox1.Text = randomLottery;
         }
     }
 }

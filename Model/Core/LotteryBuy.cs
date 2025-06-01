@@ -8,7 +8,7 @@ namespace LotteryArchive.Model.Core
 {
     public partial class Lottery
     {
-        public int Price {  get; private set; }
+        public int Price {  get;  set; }
         public Ticket Buy(LotteryParticipant person)
         {
             return person.Buy(this);

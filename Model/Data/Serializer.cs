@@ -10,7 +10,7 @@ namespace Model.Data
 {
     public abstract class Serializer : ISerializer
     {
-        public abstract void SerializeLottery(Lottery lotter, WinningTicket TicetWin);
+        public abstract void SerializeLottery<T>(T lotter, WinningTicket TicetWin) where T : Lottery;
 
         public abstract List<string> DeserializeLottery(string file);
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model.Core.Ticket;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace LotteryArchive.Model.Core
 {
-    public partial class Ticket
+    public partial class Ticket : TicetBase
     {
         private int _cost;
-        public int Cost => Math.Abs(_cost); // Гарантируем положительное значение
+        public override int Cost => Math.Abs(_cost); // Гарантируем положительное значение
 
         public void SetCost(Lottery lottery)
         {

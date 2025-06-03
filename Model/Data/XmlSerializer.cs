@@ -44,7 +44,7 @@ namespace Model.Data
             return lines;
         }
 
-        public override void SerializeLottery(Lottery loter, WinningTicket TicetWin)
+        public override void SerializeLottery<T>(T loter, WinningTicket TicetWin)
         {
             if (loter == null || TicetWin == null) return;
 

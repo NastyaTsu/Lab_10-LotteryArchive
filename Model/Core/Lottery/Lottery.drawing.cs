@@ -9,6 +9,7 @@ namespace LotteryArchive.Model.Core
 {
     public partial class Lottery : ILotteryService
     {
+        public event Action<WinningTicket> OnLotteryCompleted; // Делегат
         public WinningTicket DetermineWinner()
         {
             // Проверяем, продано ли более 25% билетов
@@ -34,6 +35,7 @@ namespace LotteryArchive.Model.Core
             };
 
             winningTicket.Owner.AddWinning(winner.Prize);
+            OnLotteryCompleted?.Invoke(winner); // Вызов события
 
             return winner;
         }

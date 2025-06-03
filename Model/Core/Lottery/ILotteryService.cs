@@ -1,4 +1,5 @@
 ﻿using LotteryArchive.Model.Core;
+using Model.Core.Ticket;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace Model.Core.Lottery
 
         void CancelLottery();
         bool SellAdditionalTickets(LotteryParticipant participant, int count);
-        Ticket Buy(LotteryParticipant person);
+        TicetBase Buy(LotteryParticipant person);
         void DistributeTickets(List<LotteryParticipant> participants);
     }
 }

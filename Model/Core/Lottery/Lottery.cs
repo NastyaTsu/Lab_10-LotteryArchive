@@ -66,5 +66,15 @@ namespace LotteryArchive.Model.Core
                 }
             }
         }
+        public void DistributeTickets(List<LotteryParticipant> participants, int ticketsPerPerson)
+        {
+            _ticket.Clear();
+            foreach (var p in participants)
+            {
+                for (int i = 0; i < ticketsPerPerson; i++)
+                    _ticket.Add(new Ticket(this, p));
+            }
+        }
+
     }
 }

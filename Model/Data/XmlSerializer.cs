@@ -44,11 +44,6 @@ namespace Model.Data
             return lines;
         }
 
-        public override LotteryParticipant DeserializeParticipant(string fileName)
-        {
-            throw new NotImplementedException();
-        }
-
         public override void SerializeLottery(Lottery loter, WinningTicket TicetWin)
         {
             if (loter == null || TicetWin == null) return;
@@ -79,11 +74,6 @@ namespace Model.Data
                 writer.WriteEndElement();
                 writer.WriteEndDocument();
             }
-        }
-
-        public override void SerializeParticipant(LotteryParticipant participant)
-        {
-            throw new NotImplementedException();
         }
     }
 }

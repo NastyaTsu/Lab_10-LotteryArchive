@@ -1,3 +1,4 @@
+using LotteryArchive.Model.Core;
 using Model;
 namespace LotteryArchive
 {
@@ -40,7 +41,7 @@ namespace LotteryArchive
 
         private void button3_Click(object sender, EventArgs e)
         {
-            
+
 
             // Открыть форму со статистикой и передать файлы
             var statsForm = new Statistic();
@@ -56,5 +57,11 @@ namespace LotteryArchive
         {
             _selectedItem = comboBox1.SelectedItem.ToString();
         }
+
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

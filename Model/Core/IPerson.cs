@@ -11,6 +11,5 @@ namespace LotteryArchive.Model.Core
         string Firstname { get; set; }
         string Lastname { get; set; }
         string Fullname { get; }
-        static int Id { get; set; }
     }
 }

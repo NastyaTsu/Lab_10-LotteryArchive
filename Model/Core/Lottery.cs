@@ -13,9 +13,6 @@ namespace LotteryArchive.Model.Core
         public int Totaltickets { get; set; }
         public int Prizefond { get; set; }
         public int Colparticipants { get; set; }
-        public LotteryParticipant Победитель { get; set; }
-        public LotteryParticipant ID_победителя { get; set; }
-        public DateTime Дата_проведения { get; set; }
         private List<Ticket> _ticket;
         public List<Ticket> Massivticket
         {
@@ -30,7 +27,6 @@ namespace LotteryArchive.Model.Core
             }
         }
 
-        private List<LotteryParticipant> _person;
         public Lottery(string name, int totaltickets, int prizefond, int colparticipants, int price)
         {
             Name = name;
@@ -40,43 +36,29 @@ namespace LotteryArchive.Model.Core
             _ticket = new List<Ticket>(Totaltickets);
             Price = price;
         }
-        public void RandomPerson()
+        public void DistributeTickets(List<LotteryParticipant> participants)
         {
-            string[] firstNames = {
-                "Александр", "Дмитрий", "Максим", "Сергей", "Андрей",
-                "Алексей", "Артем", "Илья", "Кирилл", "Михаил",
-                "Никита", "Матвей", "Роман", "Егор", "Арсений",
-                "Иван", "Денис", "Евгений", "Даниил", "Тимофей",
-                "Владислав", "Игорь", "Владимир", "Павел", "Руслан",
-                "Марк", "Константин", "Тимур", "Олег", "Ярослав",
-                "Анна", "Мария", "Елена", "Дарья", "Алина",
-                "Ирина", "Екатерина", "Арина", "Наталья", "Виктория",
-                "Ольга", "Юлия", "Татьяна", "Евгения", "Анастасия",
-                "Полина", "Ксения", "София", "Александра", "Вероника"};
-            string[] lastNames = {
-                "Иванов", "Смирнов", "Кузнецов", "Попов", "Васильев",
-                "Петров", "Соколов", "Михайлов", "Новиков", "Федоров",
-                "Морозов", "Волков", "Алексеев", "Лебедев", "Семенов",
-                "Егоров", "Павлов", "Козлов", "Степанов", "Николаев",
-                "Орлов", "Андреев", "Макаров", "Никитин", "Захаров",
-                "Зайцев", "Соловьев", "Борисов", "Яковлев", "Григорьев",
-                "Романов", "Воробьев", "Сергеев", "Кузьмин", "Фролов",
-                "Александров", "Дмитриев", "Королев", "Гусев", "Киселев",
-                "Ильин", "Максимов", "Поляков", "Сорокин", "Виноградов",
-                "Ковалев", "Белов", "Медведев", "Антонов", "Тарасов" };
-
+            _ticket.Clear();
             Random random = new Random();
-            for (int i = 0; i < Totaltickets; i++)
+
+            // Равномерно распределяем билеты между участниками
+            int ticketsPerParticipant = Totaltickets / participants.Count;
+            int remainingTickets = Totaltickets % participants.Count;
+
+            foreach (var participant in participants)
             {
-                int randomBalanse = random.Next(1000);
-                int randomzhadnost = random.Next(100);
-                string randomFirstName = firstNames[random.Next(firstNames.Length)];
-                string randomLastName = lastNames[random.Next(lastNames.Length)];
-                var participaint = new LotteryParticipant(randomFirstName, randomLastName, randomBalanse, randomzhadnost);
-                var byeticets = participaint.Buy(this);
-                _ticket.Add(byeticets);
+                int ticketsToAssign = ticketsPerParticipant;
+                if (remainingTickets > 0)
+                {
+                    ticketsToAssign++;
+                    remainingTickets--;
+                }
+
+                for (int i = 0; i < ticketsToAssign; i++)
+                {
+                    _ticket.Add(new Ticket(this, participant));
+                }
             }
-            
         }
     }
 }

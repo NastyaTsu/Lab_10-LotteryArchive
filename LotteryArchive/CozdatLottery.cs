@@ -60,15 +60,41 @@ namespace LotteryArchive
             int KolBilet = (int)numericUpDown2.Value;
             int KolPrize = (int)numericUpDown3.Value;
             int KolPrice = (int)numericUpDown4.Value;
+            if (Participant.People.Count < KolPerson)
+            {
+                MessageBox.Show($"Недостаточно участников. Требуется: {KolPerson}, доступно: {Participant.People.Count}");
+                return;
+            }
+            var selectedParticipants = GetRandomParticipants(KolPerson);
+
+            // Проверяем баланс участников
+            foreach (var participant in selectedParticipants)
+            {
+                if (participant.Balance < KolPrice)
+                {
+                    MessageBox.Show($"У участника {participant.Fullname} недостаточно средств");
+                    return;
+                }
+            }
+
+            // Списываем средства за участие
+            foreach (var participant in selectedParticipants)
+            {
+                participant.Balance -= KolPrice;
+            }
+
 
             var lottery = new Lottery(name, KolBilet, KolPrize, KolPerson, KolPrice);
-            lottery.RandomPerson();
+            lottery.DistributeTickets(selectedParticipants);
             var TicetWin = lottery.DetermineWinner();
             if (TicetWin == null)
             {
                 MessageBox.Show("Лотерея отменена");
                 return;
             }
+
+            // Начисляем выигрыш победителю
+            TicetWin.Owner.Balance += KolPrize;
             string id = TicetWin.Id;
             LotteryParticipant person = TicetWin.Owner;
             string FullNamePerson = person.Fullname;
@@ -86,6 +112,23 @@ namespace LotteryArchive
                 new XmlSerializer().SerializeLottery(lottery, TicetWin);
             }
 
+        }
+        private List<LotteryParticipant> GetRandomParticipants(int count)
+        {
+            var random = new Random();
+            // Создаем копию списка участников
+            var availableParticipants = new List<LotteryParticipant>(Participant.People);
+            var selectedParticipants = new List<LotteryParticipant>();
+
+            // Выбираем случайных участников
+            for (int i = 0; i < count; i++)
+            {
+                int index = random.Next(availableParticipants.Count);
+                selectedParticipants.Add(availableParticipants[index]);
+                availableParticipants.RemoveAt(index); // Удаляем, чтобы не выбирать повторно
+            }
+
+            return selectedParticipants;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

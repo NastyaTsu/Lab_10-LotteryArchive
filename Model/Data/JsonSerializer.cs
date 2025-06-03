@@ -44,11 +44,6 @@ namespace Model.Data
             return lines;
         }
 
-        public override LotteryParticipant DeserializeParticipant(string fileName)
-        {
-            throw new NotImplementedException();
-        }
-
         public override void SerializeLottery(Lottery loter, WinningTicket TicetWin)
         {
             if (loter == null) return;
@@ -86,11 +81,6 @@ namespace Model.Data
             string fullPath = Path.Combine(folderPath, Filename + ".json");
 
             File.WriteAllText(fullPath, json);
-        }
-
-        public override void SerializeParticipant(LotteryParticipant participant)
-        {
-            throw new NotImplementedException();
         }
     }
 }

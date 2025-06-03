@@ -10,11 +10,10 @@ namespace Model.Core.Lottery
 {
     internal interface ILotteryService
     {
-        WinningTicket DetermineWinner();
-
-        void CancelLottery();
-        bool SellAdditionalTickets(LotteryParticipant participant, int count);
-        TicetBase Buy(LotteryParticipant person);
-        void DistributeTickets(List<LotteryParticipant> participants);
+        WinningTicket DetermineWinner(); // определяет победителя лотереи
+        void CancelLottery(); // отменяет лотерею
+        bool SellAdditionalTickets(LotteryParticipant participant, int count); // продает дополнительные билеты участнику учитывает баланс и жадность
+        TicetBase Buy(LotteryParticipant person); // покупает один билет для указанного участника
+        void DistributeTickets(List<LotteryParticipant> participants); // распределяет билеты между участниками
     }
 }

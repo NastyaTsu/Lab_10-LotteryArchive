@@ -48,25 +48,15 @@ namespace LotteryArchive
             var statsForm = new Statistic();
             statsForm.ShowDialog();
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             _selectedItem = comboBox1.SelectedItem.ToString();
         }
 
-        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        private void Form1_Load(object sender, EventArgs e) { }
 
-        }
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e) { }
 
-        private void checkedListBox1_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-
-        }
+        private void checkedListBox1_SelectedIndexChanged_1(object sender, EventArgs e) { }
     }
 }

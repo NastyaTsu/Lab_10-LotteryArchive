@@ -105,11 +105,11 @@ namespace LotteryArchive
             MessageBox.Show($"Победитель: {FullNamePerson}{Environment.NewLine} id выигрышного билета: {id}{Environment.NewLine} Выигрыш: {KolPrize}{Environment.NewLine} Баланс победителя {PersonBalanse}");
 
 
-            if (Form1.SelectedItem == "Json")
+            if (LotteryMain.SelectedItem == "Json")
             {
                 new JsonSerializer().SerializeLottery(lottery, TicetWin);
             }
-            if (Form1.SelectedItem == "Xml")
+            if (LotteryMain.SelectedItem == "Xml")
             {
                 new XmlSerializer().SerializeLottery(lottery, TicetWin);
             }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Model.Data
 {
-    public abstract class Serializer
+    public abstract class Serializer : ISerializer
     {
         public abstract void SerializeLottery(Lottery lotter, WinningTicket TicetWin);
 

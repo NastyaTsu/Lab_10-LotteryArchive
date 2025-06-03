@@ -1,5 +1,4 @@
 C:\Users\Honor\source\repos\LotteryArchive\LotteryArchive\obj\Debug\net8.0-windows\LotteryArchive.CozdatLottery.resources
-C:\Users\Honor\source\repos\LotteryArchive\LotteryArchive\obj\Debug\net8.0-windows\LotteryArchive.Form1.resources
 C:\Users\Honor\source\repos\LotteryArchive\LotteryArchive\obj\Debug\net8.0-windows\LotteryArchive.Participant.resources
 C:\Users\Honor\source\repos\LotteryArchive\LotteryArchive\obj\Debug\net8.0-windows\LotteryArchive.Properties.Resources.resources
 C:\Users\Honor\source\repos\LotteryArchive\LotteryArchive\obj\Debug\net8.0-windows\LotteryArchive.Statistic.resources
@@ -45,3 +44,4 @@ C:\Users\Honor\source\repos\LotteryArchive\LotteryArchive\bin\Debug\net8.0-windo
 C:\Users\Honor\source\repos\LotteryArchive\LotteryArchive\bin\Debug\net8.0-windows\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\Honor\source\repos\LotteryArchive\LotteryArchive\bin\Debug\net8.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\Honor\source\repos\LotteryArchive\LotteryArchive\bin\Debug\net8.0-windows\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\Users\Honor\source\repos\LotteryArchive\LotteryArchive\obj\Debug\net8.0-windows\LotteryArchive.LotteryMain.resources

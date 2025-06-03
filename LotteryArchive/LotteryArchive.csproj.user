@@ -4,7 +4,7 @@
     <Compile Update="CozdatLottery.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Form1.cs">
+    <Compile Update="LotteryMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Participant.cs">

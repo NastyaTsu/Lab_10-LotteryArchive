@@ -10,17 +10,16 @@ namespace LotteryArchive.Model.Core
     {
         public string Firstname { get; set; }
         public string Lastname { get; set; }
+        public int Id { get; } // Уникальный ID для каждого участника
+        private static int _lastId = 0;
 
         public Person(string firstname, string lastname)
         {
+            Id = Interlocked.Increment(ref _lastId);
             Firstname = firstname;
             Lastname = lastname;
-            _id++;
         }
         public string Fullname => $"{Firstname} {Lastname}";
-
-        private static int _id = 0;
-        public static int Id => _id; // количество участников
 
         public override string ToString()
         {

@@ -9,7 +9,6 @@ namespace LotteryArchive.Model.Core
     public partial class Ticket
     {
         private int _id;
-        private static int _cont;
         private int _lenght;
         private LotteryParticipant _owner;
         public LotteryParticipant Owner => _owner;
@@ -17,9 +16,13 @@ namespace LotteryArchive.Model.Core
         public string Id => _id.ToString($"D{_lenght}");
         public Ticket(Lottery lottery, LotteryParticipant person)
         {
-            _id = _cont++;
+            _id = person.Id;
             _owner = person;
             _lenght = lottery.Totaltickets.ToString().Length;
+        }
+        public Ticket()
+        {
+
         }
         
     }

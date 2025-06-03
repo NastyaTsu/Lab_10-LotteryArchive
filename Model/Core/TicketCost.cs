@@ -9,6 +9,12 @@ namespace LotteryArchive.Model.Core
     public partial class Ticket
     {
         private int _cost;
-        public int Cost => _cost;
+        public int Cost => Math.Abs(_cost); // Гарантируем положительное значение
+
+        public void SetCost(Lottery lottery)
+        {
+            if (lottery == null) throw new ArgumentNullException("Лотерея не может быть null");
+            _cost = Math.Abs(lottery.Price); // Убедимся, что цена положительная
+        }
     }
 }

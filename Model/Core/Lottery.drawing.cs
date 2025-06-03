@@ -32,6 +32,8 @@ namespace LotteryArchive.Model.Core
                 Prize = (int)(Prizefond * (0.5 + random.NextDouble() * 0.5)) // Приз 50-100% от фонда
             };
 
+            winningTicket.Owner.AddWinning(winner.Prize);
+
             return winner;
         }
 

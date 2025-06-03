@@ -1,12 +1,16 @@
 using LotteryArchive.Model.Core;
 using Model;
+using System.Windows.Forms;
+
 namespace LotteryArchive
+
 {
     public partial class Form1 : Form
     {
         public Form1()
         {
             InitializeComponent();
+
         }
         private static string _selectedItem;
         public static string SelectedItem => _selectedItem;
@@ -41,9 +45,6 @@ namespace LotteryArchive
 
         private void button3_Click(object sender, EventArgs e)
         {
-
-
-            // Открыть форму со статистикой и передать файлы
             var statsForm = new Statistic();
             statsForm.ShowDialog();
         }
@@ -63,5 +64,9 @@ namespace LotteryArchive
 
         }
 
+        private void checkedListBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

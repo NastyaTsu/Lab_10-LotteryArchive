@@ -83,8 +83,10 @@ namespace LotteryArchive
                 participant.Balance -= KolPrice;
             }
 
-
+            
             var lottery = new Lottery(name, KolBilet, KolPrize, KolPerson, KolPrice);
+            var tic = new Ticket();
+            tic.SetCost(lottery);
             lottery.DistributeTickets(selectedParticipants);
             var TicetWin = lottery.DetermineWinner();
             if (TicetWin == null)

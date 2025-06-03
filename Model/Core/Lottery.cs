@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace LotteryArchive.Model.Core
 {
     public partial class Lottery
@@ -35,6 +36,10 @@ namespace LotteryArchive.Model.Core
             Colparticipants = colparticipants;
             _ticket = new List<Ticket>(Totaltickets);
             Price = price;
+        }
+        public Lottery()
+        {
+
         }
         public void DistributeTickets(List<LotteryParticipant> participants)
         {

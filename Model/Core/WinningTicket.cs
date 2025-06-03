@@ -15,7 +15,6 @@ namespace LotteryArchive.Model.Core
         }
 
         public int Prize { get; set; }
-        private Ticket _win;
         private static readonly Random random = new Random();
 
         public Ticket Winningticket

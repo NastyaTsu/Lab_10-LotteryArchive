@@ -19,23 +19,16 @@ namespace LotteryArchive
             InitializeComponent();
             Text = "Добавить человека";
         }
-
-        private void PersonAddEdit_Load(object sender, EventArgs e)
-        {
-
-        }
         public LotteryParticipant Person { get; private set; }
-
-
-
+        private void PersonAddEdit_Load(object sender, EventArgs e) { }
         public PersonAddEdit(LotteryParticipant person) : this()
         {
             Text = "Редактировать человека";
             Person = person;
             textBox1.Text = person.Firstname;
             textBox2.Text = person.Lastname;
-            numericUpDown1.Value = person.Zhadnost;
-            numericUpDown2.Value = person.Balance;
+            numericUpDown2.Value = person.Zhadnost;
+            numericUpDown1.Value = person.Balance;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -61,34 +54,21 @@ namespace LotteryArchive
             }
             else
             {
-                Person.Firstname = textBox1.Text;
-                Person.Lastname = textBox2.Text;
-                Person.Zhadnost = (int)numericUpDown1.Value;
-                Person.Balance = (int)numericUpDown2.Value;
+                LotteryParticipant lotteryParticipant = Person as LotteryParticipant;
+                lotteryParticipant.First(textBox1.Text);
+                lotteryParticipant.Last(textBox2.Text);
+                lotteryParticipant.NewBalance((int)numericUpDown1.Value);
+                lotteryParticipant.NewZhadnost((int)numericUpDown2.Value);
             }
 
             DialogResult = DialogResult.OK;
             Close();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
+        private void label1_Click(object sender, EventArgs e) { }
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e) { }
 
-        }
-
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void textBox1_TextChanged(object sender, EventArgs e) { }
+        private void label2_Click(object sender, EventArgs e) { }
     }
 }

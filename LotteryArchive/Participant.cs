@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace LotteryArchive
 {
@@ -18,32 +19,25 @@ namespace LotteryArchive
         public Participant()
         {
             InitializeComponent();
-            //LoadPeople();
-            //UpdateDataGridView();
+        }
+        public static event Action ParticipantsChanged;
+        public static void AddParticipant(LotteryParticipant participant)
+        {
+            People.Add(participant);
+            ParticipantsChanged?.Invoke();
         }
 
-
+        // И в button1_Click:
         private void button1_Click(object sender, EventArgs e)
         {
             var form = new PersonAddEdit();
             if (form.ShowDialog() == DialogResult.OK)
             {
-                People.Add(form.Person);
+                AddParticipant(form.Person); // Используем метод вместо People.Add
                 dataGridView1.DataSource = null;
                 dataGridView1.DataSource = People;
             }
         }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void Participant_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void button2_Click_1(object sender, EventArgs e)
         {
             // Проверяем, что выбрана строка
@@ -63,10 +57,11 @@ namespace LotteryArchive
             if (editForm.ShowDialog() == DialogResult.OK)
             {
                 // Обновляем данные участника
-                selectedPerson.Firstname = editForm.Person.Firstname;
-                selectedPerson.Lastname = editForm.Person.Lastname;
-                selectedPerson.Zhadnost = editForm.Person.Zhadnost;
-                selectedPerson.Balance = editForm.Person.Balance;
+                LotteryParticipant lotteryParticipant = selectedPerson as LotteryParticipant;
+                lotteryParticipant.First(editForm.Person.Firstname);
+                lotteryParticipant.Last(editForm.Person.Lastname);
+                lotteryParticipant.NewZhadnost((int)editForm.Person.Zhadnost);
+                lotteryParticipant.NewBalance((int)editForm.Person.Balance);
 
 
                 // Обновляем отображение таблицы
@@ -136,5 +131,9 @@ namespace LotteryArchive
             dataGridView1.DataSource = People;
             MessageBox.Show("Добавлено 10 случайных участников");
         }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e) { }
+
+        private void Participant_Load(object sender, EventArgs e) { }
     }
 }

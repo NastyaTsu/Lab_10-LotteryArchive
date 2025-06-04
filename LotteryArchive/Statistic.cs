@@ -25,12 +25,6 @@ namespace LotteryArchive
             LoadData();
 
         }
-
-        private void Statistic_Load(object sender, EventArgs e)
-        {
-        }
-
-
         private void LoadData()
         {
             string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -100,15 +94,13 @@ namespace LotteryArchive
 
             dataGridView1.DataSource = table;
         }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             LoadData();
         }
+
+        private void Statistic_Load(object sender, EventArgs e) { }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e){ }
     }
 }

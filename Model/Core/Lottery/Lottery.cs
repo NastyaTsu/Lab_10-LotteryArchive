@@ -11,10 +11,10 @@ namespace LotteryArchive.Model.Core
     public partial class Lottery : ILotteryService
     {
         
-        public string Name { get; set; }
-        public int Totaltickets { get; set; }
-        public int Prizefond { get; set; }
-        public int Colparticipants { get; set; }
+        public string Name { get; private set; }
+        public int Totaltickets { get; private set; }
+        public int Prizefond { get; private set; }
+        public int Colparticipants { get; private set; }
         private List<Ticket> _ticket;
         public List<Ticket> Massivticket
         {

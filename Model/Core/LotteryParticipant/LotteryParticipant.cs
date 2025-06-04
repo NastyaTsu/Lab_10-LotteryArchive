@@ -8,8 +8,8 @@ namespace LotteryArchive.Model.Core
 {
     public partial class LotteryParticipant : Person
     {
-        public List<Ticket> Tickets { get; } = new List<Ticket>();
-        public List<int> Winnings { get; } = new List<int>();
+        public List<Ticket> Tickets { get; private set; } = new List<Ticket>();
+        public List<int> Winnings { get; private set; } = new List<int>();
 
         public void AddWinning(int amount)
         {
@@ -21,6 +21,7 @@ namespace LotteryArchive.Model.Core
             Balance = balance;
             Zhadnost = zhadnost;
         }
+        public LotteryParticipant() { }
         public Ticket Buy(Lottery lottery)
         {
             var ticket = new Ticket(lottery, this);

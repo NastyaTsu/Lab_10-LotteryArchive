@@ -12,6 +12,7 @@ using Model.Data;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using static LotteryArchive.Model.Core.LotteryParticipant;
 
 namespace LotteryArchive
 {
@@ -80,7 +81,7 @@ namespace LotteryArchive
             // Списываем средства за участие
             foreach (var participant in selectedParticipants)
             {
-                participant.Balance -= KolPrice;
+                participant.MinToBalance(KolPrice);
             }
 
             
@@ -96,7 +97,9 @@ namespace LotteryArchive
             }
 
             // Начисляем выигрыш победителю
-            TicetWin.Owner.Balance += KolPrize;
+            LotteryParticipant lotteryParticipant1 = TicetWin.Owner as LotteryParticipant;
+
+            lotteryParticipant1.AddToBalance(KolPrize);
             string id = TicetWin.Id;
             LotteryParticipant person = TicetWin.Owner;
             string FullNamePerson = person.Fullname;

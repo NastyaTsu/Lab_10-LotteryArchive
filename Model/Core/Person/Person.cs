@@ -9,18 +9,29 @@ namespace LotteryArchive.Model.Core
 {
     public class Person : IPerson
     {
-        public string Firstname { get; set; }
-        public string Lastname { get; set; }
+        private string _name;
+        private string _lastname;
+        public string Firstname => _name;
+        public string Lastname => _lastname;
         public int Id { get; } // Уникальный ID для каждого участника
         private static int _lastId = 0;
 
         public Person(string firstname, string lastname)
         {
             Id = Interlocked.Increment(ref _lastId);
-            Firstname = firstname;
-            Lastname = lastname;
+            _name = firstname;
+            _lastname = lastname;
         }
+        public Person() { }
         public string Fullname => $"{Firstname} {Lastname}";
+        public void First(string firstName)
+        {
+            _name = firstName;
+        }
+        public void Last(string lastName)
+        {
+            _lastname = lastName;
+        }
 
         public override string ToString()
         {

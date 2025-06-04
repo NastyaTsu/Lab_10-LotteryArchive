@@ -10,7 +10,7 @@ namespace LotteryArchive.Model.Core
 {
     public partial class Lottery : ILotteryService
     {
-        public int Price {  get;  set; }
+        public int Price {  get;  private set; }
         public TicetBase Buy(LotteryParticipant person)
         {
             return person.Buy(this);

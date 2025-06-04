@@ -8,8 +8,8 @@ namespace Model.Core.Person
 {
     public interface IPerson
     {
-        string Firstname { get; set; }
-        string Lastname { get; set; }
+        string Firstname { get; }
+        string Lastname { get; }
         string Fullname { get; }
     }
 }

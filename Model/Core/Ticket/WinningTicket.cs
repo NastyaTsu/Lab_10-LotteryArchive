@@ -13,8 +13,12 @@ namespace LotteryArchive.Model.Core
         {
             lot = lottery;
         }
+        public WinningTicket()
+        {
 
-        public int Prize { get; set; }
+        }
+
+        public int Prize { get; private set; }
         private static readonly Random random = new Random();
 
         public Ticket Winningticket
@@ -27,6 +31,10 @@ namespace LotteryArchive.Model.Core
                 int randomIndex = random.Next(lot.Massivticket.Count);
                 return lot.Massivticket[randomIndex];
             }
+        }
+        public void NewPrice(int prize)
+        {
+            Prize = prize;
         }
 
     }

@@ -11,8 +11,8 @@ namespace Model.Core.Person
         private static int _lastId = 0;
 
         public int Id { get; }
-        public string Firstname { get; set; }
-        public string Lastname { get; set; }
+        public string Firstname { get; }
+        public string Lastname { get; }
 
         protected PersonBase()
         {

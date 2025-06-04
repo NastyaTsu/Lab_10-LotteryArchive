@@ -28,11 +28,9 @@ namespace LotteryArchive.Model.Core
             var random = new Random();
             var winningTicket = soldTickets[random.Next(soldTickets.Count)];
 
+            WinningTicket winningTicket1 = new WinningTicket();
             // Создаем выигрышный билет
-            var winner = new WinningTicket(this, winningTicket.Owner)
-            {
-                Prize = (int)(Prizefond * (0.5 + random.NextDouble() * 0.5)) // Приз 50-100% от фонда
-            };
+            var winner = new WinningTicket(this, winningTicket.Owner);
 
             winningTicket.Owner.AddWinning(winner.Prize);
             OnLotteryCompleted?.Invoke(winner); // Вызов события
@@ -45,7 +43,7 @@ namespace LotteryArchive.Model.Core
             // Возвращаем 90% стоимости билетов
             foreach (var ticket in _ticket.Where(t => t.Owner != null))
             {
-                ticket.Owner.Balance += (int)(ticket.Cost * 0.9);
+                ticket.Owner.AddToBalance((int)(ticket.Cost * 0.9));
             }
         }
     }
